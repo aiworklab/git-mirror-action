@@ -19,12 +19,15 @@ git remote set-url --push origin "$DESTINATION_REPO"
 echo "git fetch"
 git fetch -p origin
 echo "git for-each-ref "
+
 # Exclude refs created by GitHub for pull request.
-git for-each-ref --format 'delete %(refname)' refs/pull | git update-ref --stdin
-if [ "$DRY_RUN" = "true" ]
-then
-    echo "INFO: Dry Run, no data is pushed"
-    git push --mirror --dry-run
-else
-    git push --mirror
-fi
+# git for-each-ref --format 'delete %(refname)' refs/pull | git update-ref --stdin
+# if [ "$DRY_RUN" = "true" ]
+# then
+#     echo "INFO: Dry Run, no data is pushed"
+#     git push --mirror --dry-run
+# else
+#     git push --mirror
+# fi
+
+git push -f origin test
