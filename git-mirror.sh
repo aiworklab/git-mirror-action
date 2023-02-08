@@ -31,4 +31,5 @@ echo "git for-each-ref "
 #     git push --mirror
 # fi
 
-git push -f origin test
+git remote add mirror "$DESTINATION_REPO"
+git push -f mirror test
