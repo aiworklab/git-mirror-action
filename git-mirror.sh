@@ -12,6 +12,7 @@ GIT_SSH_COMMAND="ssh -v"
 echo "SOURCE=$SOURCE_REPO"
 echo "DESTINATION=$DESTINATION_REPO"
 echo "DRY RUN=$DRY_RUN"
+rm -rf $SOURCE_DIR
 echo "git clone"
 git clone --mirror "$SOURCE_REPO" "$SOURCE_DIR" && cd "$SOURCE_DIR"
 echo "git remote"
