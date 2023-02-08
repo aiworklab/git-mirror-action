@@ -13,13 +13,9 @@ echo "SOURCE=$SOURCE_REPO"
 echo "DESTINATION=$DESTINATION_REPO"
 echo "DRY RUN=$DRY_RUN"
 rm -rf $SOURCE_DIR
-echo "git clone"
 git clone --mirror "$SOURCE_REPO" "$SOURCE_DIR" && cd "$SOURCE_DIR"
-echo "git remote"
 git remote set-url --push origin "$DESTINATION_REPO"
-echo "git fetch"
 git fetch -p origin
-echo "git for-each-ref "
 
 # Exclude refs created by GitHub for pull request.
 # git for-each-ref --format 'delete %(refname)' refs/pull | git update-ref --stdin
@@ -32,4 +28,4 @@ echo "git for-each-ref "
 # fi
 
 git remote add mirror "$DESTINATION_REPO"
-git push -f mirror test
+git push -f mirror test > /dev/null 2>&1
